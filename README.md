@@ -1,29 +1,9 @@
 # Colegio Santa Gema
 
-Sitio web institucional del Colegio Santa Gema, desarrollado con Astro, React y Tailwind CSS. Incluye información del colegio, galería, calendario escolar y canales de contacto.
+Sitio web institucional creado para presentar al Colegio Santa Gema y facilitar el acceso a la información que necesitan las familias.
 
-## Requisitos
+El proyecto reúne la historia y propuesta educativa del colegio, una galería de la vida escolar, un calendario interactivo y los canales oficiales de contacto y admisión. Su diseño se adapta a computadoras y dispositivos móviles, con una navegación clara y una identidad visual coherente en todas las secciones.
 
-- Node.js 22.12 o superior
-- npm
+**Tecnologías:** Astro, React y Tailwind CSS.
 
-## Desarrollo local
-
-```bash
-npm ci
-npm run dev
-```
-
-## Compilación
-
-```bash
-npm run build
-```
-
-Astro genera el sitio estático en `dist/`. Para publicarlo en el hosting actual, se sube **el contenido de `dist/`** a `public_html/`. El directorio `dist/` y los ZIP de despliegue no se guardan en Git.
-
-## Configuración
-
-No se necesitan variables de entorno para compilar el sitio. Los enlaces de contacto, redes sociales y admisión están definidos en los componentes de `src/`. Las imágenes y otros archivos públicos se encuentran en `public/`.
-
-Las URL canónicas del sitio, `robots.txt` y `sitemap.xml` apuntan a `https://colegiosantagema.edu.ve/`. Si cambia el dominio, deben actualizarse esos archivos y `src/components/SeoHead.astro`.
+**Sitio web:** [colegiosantagema.edu.ve](https://colegiosantagema.edu.ve/)
