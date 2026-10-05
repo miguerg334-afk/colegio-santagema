@@ -1,0 +1,85 @@
+---
+import { Check, BookOpen, MonitorCog } from "@lucide/astro";
+
+const primaryFeatures = ["Inglés, Música y Robótica educativa como materias especiales.", "Educación Física con especialistas.", "Matemáticas interactivas con el método tekman.", "Desde 6.º grado, semilleros del Modelo de las Naciones Unidas (CSGMUN)."];
+const secondaryFeatures = ["Herramientas Digitales: Inteligencia Artificial y Marketing Digital.", "Finanzas y Economía.", "Teatro y artes plásticas.", "Liderazgo, Protocolo, Diplomacia y Oratoria."];
+---
+
+<section id="oferta" class="academic-offer relative isolate scroll-mt-24 overflow-hidden bg-slate-950 py-20 text-white sm:py-28">
+	<div class="academic-offer__parallax" aria-hidden="true"></div>
+	<div class="academic-offer__shade absolute inset-0 z-[1]" aria-hidden="true"></div>
+	<div class="pointer-events-none absolute -right-8 top-4 z-[2] text-[clamp(11rem,26vw,25rem)] font-black leading-none tracking-[-.08em] text-white/[.035]" aria-hidden="true">SG</div>
+
+	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+		<header class="grid gap-7 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
+			<div>
+				<div class="flex items-center gap-4"><span class="h-px w-10 bg-emerald-300"></span><p class="text-xs font-bold tracking-[.24em] text-emerald-200 uppercase">Oferta académica</p></div>
+				<h2 class="academic-offer__text mt-5 max-w-3xl text-4xl font-semibold leading-[1.03] tracking-[-.045em] text-white sm:text-6xl">Formación integral para <span class="text-emerald-200">cada etapa.</span></h2>
+			</div>
+			<p class="academic-offer__text max-w-xl text-base leading-8 text-white lg:justify-self-end">Acompañamos a cada estudiante con excelencia académica, innovación educativa, valores, creatividad y desarrollo personal.</p>
+		</header>
+
+		<div class="academic-programs mt-14 grid gap-10 lg:grid-cols-2 lg:gap-12">
+			<article class="academic-program academic-program--primary">
+				<div class="flex items-center gap-4">
+					<span class="academic-program__icon grid h-12 w-12 place-items-center rounded-full bg-emerald-300/20 text-emerald-100 ring-1 ring-emerald-200/50"><BookOpen size={23} strokeWidth={1.8} /></span>
+					<p class="text-xs font-bold tracking-[.2em] text-emerald-100 uppercase">1.º a 6.º grado</p>
+					<span class="ml-auto font-serif text-2xl text-white/80">01</span>
+				</div>
+				<h3 class="academic-offer__text mt-6 text-3xl font-semibold tracking-[-.025em] sm:text-4xl">Educación Primaria</h3>
+				<p class="academic-offer__text mt-4 max-w-xl text-base leading-7 text-white">Fortalecemos las bases académicas y personales mediante experiencias de aprendizaje activas, creativas y significativas.</p>
+				<ul class="academic-program__list mt-7 space-y-3.5 text-sm leading-6 text-white sm:text-base">{primaryFeatures.map((feature) => <li class="academic-offer__text flex gap-3 transition duration-200 hover:translate-x-1 hover:text-emerald-100"><Check class="mt-1 h-4 w-4 shrink-0 text-emerald-200" strokeWidth={2.5} /><span>{feature}</span></li>)}</ul>
+			</article>
+
+			<article class="academic-program academic-program--secondary">
+				<div class="flex items-center gap-4">
+					<span class="academic-program__icon grid h-12 w-12 place-items-center rounded-full bg-blue-400/25 text-blue-100 ring-1 ring-blue-200/50"><MonitorCog size={23} strokeWidth={1.8} /></span>
+					<p class="text-xs font-bold tracking-[.2em] text-blue-100 uppercase">1.er a 5.º año</p>
+					<span class="ml-auto font-serif text-2xl text-white/80">02</span>
+				</div>
+				<h3 class="academic-offer__text mt-6 text-3xl font-semibold tracking-[-.025em] sm:text-4xl">Educación Media General</h3>
+				<p class="academic-offer__text mt-4 max-w-xl text-base leading-7 text-white">Una formación orientada al futuro que integra conocimientos académicos, competencias digitales, financieras, comunicativas y de liderazgo.</p>
+				<ul class="academic-program__list mt-7 space-y-3.5 text-sm leading-6 text-white sm:text-base">{secondaryFeatures.map((feature) => <li class="academic-offer__text flex gap-3 transition duration-200 hover:translate-x-1 hover:text-blue-100"><Check class="mt-1 h-4 w-4 shrink-0 text-blue-200" strokeWidth={2.5} /><span>{feature}</span></li>)}</ul>
+				<p class="academic-offer__text mt-6 text-sm leading-6 text-white sm:text-base">Asesorías extracurriculares de Química, Física y Matemáticas con profesores especializados.</p>
+			</article>
+		</div>
+
+	</div>
+</section>
+
+<style>
+	.academic-offer__parallax {
+		position: absolute;
+		z-index: 0;
+		inset: 0;
+		background-image: url("/oferta-academica-parallax.webp");
+		background-position: center 42%;
+		background-size: cover;
+		background-attachment: fixed;
+		pointer-events: none;
+	}
+
+	.academic-offer__shade {
+		background: linear-gradient(100deg, rgb(2 8 23 / 48%) 0%, rgb(2 8 23 / 38%) 50%, rgb(2 8 23 / 48%) 100%), linear-gradient(180deg, rgb(2 8 23 / 34%) 0%, rgb(2 8 23 / 48%) 100%);
+		pointer-events: none;
+	}
+
+	.academic-offer__text { text-shadow: 0 1px 10px rgb(2 8 23 / 60%); }
+
+	.academic-program { min-width: 0; }
+	.academic-program--secondary { padding-top: 2.25rem; border-top: 1px solid rgb(255 255 255 / 24%); }
+	.academic-program__icon { transition: transform .3s ease, background-color .3s ease; }
+	.academic-program:hover .academic-program__icon { transform: translateY(-2px) scale(1.06); }
+
+	@media (min-width: 1024px) { .academic-program--secondary { padding-top: 0; border-top: 0; } }
+
+	@media (max-width: 767px) {
+		.academic-offer__parallax { background-position: 52% center; }
+		.academic-offer__shade { background: linear-gradient(180deg, rgb(2 8 23 / 45%), rgb(2 8 23 / 62%)); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.academic-program__icon { transition: none; }
+		.academic-program:hover .academic-program__icon { transform: none; }
+	}
+</style>

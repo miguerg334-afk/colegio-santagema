@@ -1,0 +1,87 @@
+<section id="escudo" class="shield-section">
+	<div class="shield-section__pattern" aria-hidden="true"></div>
+	<div class="shield-section__container">
+		<header class="shield-section__header">
+			<div>
+				<p class="shield-section__eyebrow">Identidad pasionista</p>
+				<h2>Un escudo que cuenta nuestra misión</h2>
+			</div>
+			<p class="shield-section__intro">Cada símbolo conserva la memoria de la Pasión de Jesucristo y el amor que orienta nuestra labor educativa.</p>
+		</header>
+
+		<div class="shield-section__content">
+			<figure class="shield-section__symbol">
+				<div class="shield-section__image-wrap">
+					<span class="shield-section__halo" aria-hidden="true"></span>
+					<img src="/escudo.webp" width="150" height="225" alt="Escudo pasionista con Cruz blanca, las palabras Jesu XPI Passio y tres clavos" loading="lazy" />
+				</div>
+				<figcaption>Congregación de la Pasión</figcaption>
+			</figure>
+
+			<div class="shield-section__meanings">
+				<article class="meaning meaning--blue">
+					<span class="meaning__number">01</span>
+					<div><h3>Cruz blanca</h3><p>Recuerda el amor sufriente que Jesús mostró por nosotros en la Cruz.</p></div>
+				</article>
+				<article class="meaning meaning--green">
+					<span class="meaning__number">02</span>
+					<div><h3>Corazón</h3><p>La forma del signo representa el amor de Jesús hacia la humanidad.</p></div>
+				</article>
+				<article class="meaning meaning--green">
+					<span class="meaning__number">03</span>
+					<div><h3>Negro</h3><p>Expresa el luto perpetuo por la pasión y muerte de Jesús.</p></div>
+				</article>
+				<article class="meaning meaning--blue">
+					<span class="meaning__number">04</span>
+					<div><h3>Clavos</h3><p>Los tres clavos recuerdan la Crucifixión y las Santas Llagas que Él soportó.</p></div>
+				</article>
+				<article class="meaning meaning--wide">
+					<span class="meaning__number">05</span>
+					<div><h3>Las palabras del corazón</h3><p><strong>JESU</strong>, Jesús en hebreo; <strong>XPI</strong>, forma contraída de Cristo en griego; y <strong>PASSIO</strong>, Pasión en latín. Juntas expresan “La Pasión de Jesucristo”.</p></div>
+				</article>
+			</div>
+		</div>
+
+		<p class="shield-section__note">El hebreo, el griego y el latín eran idiomas principales en la época de Jesús y fueron utilizados en el cartel colocado sobre la Cruz.</p>
+	</div>
+</section>
+
+<style>
+	.shield-section { position: relative; overflow: hidden; background: #f8fafc; color: #0f172a; padding: 4.5rem 1.5rem; }
+	.shield-section__pattern { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(37,99,235,.045) 1px, transparent 1px), linear-gradient(rgba(37,99,235,.045) 1px, transparent 1px), radial-gradient(circle at 10% 15%, rgba(34,197,94,.12), transparent 18%), radial-gradient(circle at 90% 90%, rgba(37,99,235,.1), transparent 20%); background-size: 48px 48px, 48px 48px, auto, auto; mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent); }
+	.shield-section__container { position: relative; max-width: 1120px; margin: 0 auto; }
+	.shield-section__header { display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 3rem; padding-bottom: 1.75rem; border-bottom: 1px solid #cbd5e1; }
+	.shield-section__eyebrow { margin: 0 0 .65rem; color: #047857; font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+	.shield-section h2 { margin: 0; max-width: 650px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.04; letter-spacing: -.04em; }
+	.shield-section__intro { margin: 0; color: #475569; font-size: 1rem; line-height: 1.7; }
+	.shield-section__content { display: grid; grid-template-columns: 250px 1fr; gap: 3rem; align-items: center; padding: 2.25rem 0; }
+	.shield-section__symbol { margin: 0; display: flex; flex-direction: column; align-items: center; }
+	.shield-section__image-wrap { position: relative; display: grid; place-items: center; width: 190px; height: 230px; }
+	.shield-section__halo { position: absolute; width: 190px; height: 190px; border-radius: 50%; background: linear-gradient(145deg, #dbeafe, #dcfce7); box-shadow: inset 0 0 0 1px rgba(37,99,235,.12); }
+	.shield-section__image-wrap img { position: relative; display: block; width: 150px; max-width: 150px; height: auto; object-fit: contain; filter: drop-shadow(0 14px 13px rgba(15,23,42,.16)); transition: transform .35s ease; }
+	.shield-section__symbol:hover img { transform: translateY(-5px) scale(1.025); }
+	.shield-section figcaption { margin-top: .6rem; color: #64748b; font-size: .65rem; font-weight: 800; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+	.shield-section__meanings { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); column-gap: 2.5rem; }
+	.meaning { position: relative; display: grid; grid-template-columns: 2rem 1fr; gap: .85rem; padding: 1rem 0; border-top: 1px solid #cbd5e1; }
+	.meaning::before { content: ""; position: absolute; left: 0; top: -1px; width: 3.25rem; height: 2px; background: #2563eb; transition: width .3s ease; }
+	.meaning--green::before { background: #059669; }
+	.meaning:hover::before { width: 100%; }
+	.meaning--wide { grid-column: 1 / -1; }
+	.meaning__number { color: #94a3b8; font-size: .7rem; font-weight: 800; letter-spacing: .08em; padding-top: .25rem; }
+	.meaning h3 { margin: 0; color: #0f172a; font-size: 1.05rem; line-height: 1.35; }
+	.meaning p { margin: .35rem 0 0; color: #475569; font-size: .9rem; line-height: 1.6; }
+	.meaning strong { color: #1e3a8a; }
+	.shield-section__note { margin: 0; padding-top: 1.25rem; border-top: 1px solid #cbd5e1; color: #64748b; font-size: .78rem; line-height: 1.6; text-align: center; }
+	@media (max-width: 760px) {
+		.shield-section { padding: 3.5rem 1.25rem; }
+		.shield-section__header { grid-template-columns: 1fr; gap: 1rem; }
+		.shield-section__content { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 0; }
+		.shield-section__image-wrap { width: 160px; height: 195px; }
+		.shield-section__halo { width: 160px; height: 160px; }
+		.shield-section__image-wrap img { width: 125px; max-width: 125px; }
+	}
+	@media (max-width: 520px) {
+		.shield-section__meanings { grid-template-columns: 1fr; }
+		.meaning--wide { grid-column: auto; }
+	}
+</style>

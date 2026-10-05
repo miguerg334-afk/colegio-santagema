@@ -1,0 +1,67 @@
+---
+import { BookOpenCheck, HeartHandshake, ArrowUpRight } from "@lucide/astro";
+---
+
+<section id="institucion" class="relative scroll-mt-24 overflow-hidden bg-white py-20 sm:py-28">
+	<div class="relative z-10 mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+		<div class="institution-collage" role="group" aria-label="Estudiantes de la comunidad Santa Gema">
+			<div class="institution-collage__photo institution-collage__photo--rear">
+				<img class="institution-collage__image" src="/comunidad-santa-gema.webp" alt="Jóvenes y educadores reunidos en una actividad del Colegio Santa Gema" width="1800" height="1200" loading="lazy" />
+			</div>
+			<div class="institution-collage__photo institution-collage__photo--front">
+				<img class="institution-collage__image" src="/estudiantes-santa-gema.webp" alt="Estudiantes del Colegio Santa Gema participan en una actividad de ciencias" width="1800" height="1200" loading="lazy" />
+			</div>
+		</div>
+
+		<div class="relative">
+			<div class="flex items-center gap-4"><span class="h-px w-10 bg-emerald-600" aria-hidden="true"></span><p class="text-sm font-semibold tracking-[0.22em] text-emerald-700 uppercase">Nuestra institución</p></div>
+			<h2 class="institution-heading mt-5 max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-.045em] text-slate-950 sm:text-5xl xl:text-6xl">Una comunidad que <span class="institution-heading__accent bg-gradient-to-r from-blue-700 to-emerald-600 bg-clip-text text-transparent">acompaña cada paso.</span></h2>
+			<p class="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">En el Colegio Santa Gema formamos estudiantes con una educación cercana, exigente y guiada por los valores del Evangelio.</p>
+
+			<div class="institution-mission">
+				<p class="text-[.65rem] font-bold tracking-[.22em] text-emerald-700 uppercase">Nuestra misión</p>
+				<p class="mt-3 max-w-2xl font-serif text-xl font-medium leading-8 text-slate-800 sm:text-2xl sm:leading-9">Educar personas íntegras, capaces de servir, transformar su entorno y construir un futuro con esperanza.</p>
+			</div>
+
+			<div class="institution-features mt-8 grid gap-5 border-t border-slate-300/80 pt-6 sm:grid-cols-2 sm:gap-0">
+				<article class="institution-feature flex gap-3 pb-5 sm:pr-6 sm:pb-0">
+					<div class="institution-feature__icon grid h-11 w-11 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700"><BookOpenCheck size={21} strokeWidth={1.8} /></div>
+					<div><h3 class="text-base font-semibold text-slate-950 sm:text-lg">Excelencia académica</h3><p class="mt-2 text-sm leading-6 text-slate-600">Aprendizajes que despiertan la curiosidad y preparan para el futuro.</p></div>
+				</article>
+				<article class="institution-feature flex gap-3 border-t border-slate-300/80 pt-5 sm:border-t-0 sm:border-l sm:pl-6 sm:pt-0">
+					<div class="institution-feature__icon grid h-11 w-11 shrink-0 place-items-center rounded-full bg-blue-100 text-blue-700"><HeartHandshake size={21} strokeWidth={1.8} /></div>
+					<div><h3 class="text-base font-semibold text-slate-950 sm:text-lg">Formación en valores</h3><p class="mt-2 text-sm leading-6 text-slate-600">Una vida escolar basada en la fe, el respeto y el servicio.</p></div>
+				</article>
+			</div>
+
+			<a href="/institucion/" class="institution-cta"><span>Conoce más</span><ArrowUpRight size={19} strokeWidth={2} /></a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.institution-mission { position: relative; margin-top: 2rem; padding: .25rem 0 .25rem 1.25rem; }
+	.institution-mission::before { position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 999px; background: linear-gradient(180deg, #10b981, #2563eb); content: ""; transition: width .25s ease; }
+	.institution-mission:hover::before { width: 5px; }
+	.institution-heading__accent { background-size: 140% 100%; transition: background-position .4s ease; }
+	.institution-heading:hover .institution-heading__accent { background-position: 100% 50%; }
+	.institution-collage { display: grid; width: min(100%, 600px); gap: 1.25rem; margin-inline: auto; }
+	.institution-collage__photo { overflow: hidden; border-radius: 24px; box-shadow: 0 24px 54px -30px rgb(15 23 42 / 38%); transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease; }
+	.institution-collage__photo:first-child { width: 88%; }
+	.institution-collage__photo:last-child { width: 88%; justify-self: end; }
+	.institution-collage__photo:hover { transform: scale(1.025); box-shadow: 0 32px 64px -28px rgb(15 23 42 / 48%); }
+	.institution-collage__image { display: block; width: 100%; aspect-ratio: 3 / 2; border-radius: inherit; object-fit: cover; object-position: center; transition: transform .9s cubic-bezier(.22,1,.36,1); }
+	.institution-collage__photo:hover .institution-collage__image { transform: scale(1.025); }
+	.institution-feature { transition: transform .25s ease; }
+	.institution-feature:hover { transform: translateY(-2px); }
+	.institution-feature__icon { transition: transform .3s ease, box-shadow .3s ease; }
+	.institution-feature:hover .institution-feature__icon { transform: rotate(-6deg) scale(1.08); box-shadow: 0 8px 18px -10px currentColor; }
+	.institution-cta { display: inline-flex; min-height: 52px; align-items: center; gap: 18px; margin-top: 28px; padding: 0 24px; border: 0; border-radius: 999px; background: linear-gradient(105deg, #0f1b2d 0%, #17458a 100%); color: #fff; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; box-shadow: 0 12px 26px -14px rgb(23 69 138 / 70%); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+	.institution-cta:hover { transform: translateY(-2px); background: linear-gradient(105deg, #17458a 0%, #008b70 100%); box-shadow: 0 16px 30px -14px rgb(23 69 138 / 55%); }
+	.institution-cta:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
+	@media (max-width: 640px) { .institution-collage { gap: .75rem; } .institution-collage__photo { border-radius: 18px; } }
+	@media (prefers-reduced-motion: reduce) {
+		.institution-collage__photo, .institution-collage__image, .institution-feature, .institution-feature__icon, .institution-cta, .institution-heading__accent, .institution-mission::before { transition: none; }
+		.institution-collage__photo:hover, .institution-collage__photo:hover .institution-collage__image, .institution-feature:hover, .institution-feature:hover .institution-feature__icon, .institution-cta:hover { transform: none; }
+	}
+</style>

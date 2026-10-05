@@ -1,0 +1,29 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	path: string;
+	image: string;
+}
+
+const { title, description, path, image } = Astro.props;
+const origin = "https://colegiosantagema.edu.ve";
+const canonical = new URL(path, origin).href;
+const socialImage = new URL(image, origin).href;
+---
+
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_VE" />
+<meta property="og:site_name" content="Colegio Santa Gema" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:alt" content="Colegio Santa Gema, Caracas" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+<title>{title}</title>

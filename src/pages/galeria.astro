@@ -1,0 +1,196 @@
+---
+import "../styles/global.css";
+import "../styles/gallery-mosaic.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import SeoHead from "../components/SeoHead.astro";
+import EducationTexture from "../components/EducationTexture.astro";
+
+const photos = [
+	{ src: "/galeria/01-entrada.webp", alt: "Entrada principal del Colegio Santa Gema", title: "Nuestra entrada", category: "Institución", size: "feature" },
+	{ src: "/galeria/02-identidad.webp", alt: "Emblema del Colegio Santa Gema", title: "Nuestra identidad", category: "Identidad", size: "portrait" },
+	{ src: "/galeria/03-comunidad-en-la-rifa.webp", alt: "Integrantes de la comunidad educativa comparten una rifa en el Colegio Santa Gema", title: "Celebramos en comunidad", category: "Comunidad", size: "standard" },
+	{ src: "/galeria/04-mural-santa-gema.webp", alt: "Mural dedicado a Santa Gema", title: "Santa Gema", category: "Arte y fe", size: "tall" },
+	{ src: "/galeria/10-laboratorio.webp", alt: "Material educativo en el laboratorio de ciencias", title: "Aprender explorando", category: "Formación", size: "tall" },
+	{ src: "/galeria/11-reconocimientos.webp", alt: "Vitrina de trofeos y reconocimientos del colegio", title: "Logros que compartimos", category: "Comunidad", size: "standard" },
+	{ src: "/galeria/12-gruta-mariana.webp", alt: "Gruta mariana dentro del colegio", title: "Fe que acompaña", category: "Espiritualidad", size: "standard" },
+	{ src: "/galeria/14-arte-santa-gema.webp", alt: "Representación artística de Santa Gema", title: "Inspiración", category: "Arte y fe", size: "standard" },
+	{ src: "/galeria/15-comunidad-educativa.webp", alt: "Integrantes de la comunidad educativa del Colegio Santa Gema", title: "Quienes hacen comunidad", category: "Comunidad", size: "wide" },
+	{ src: "/galeria/16-techado-deportivo.webp", alt: "Techado del espacio deportivo del colegio", title: "Espacios para jugar", category: "Vida escolar" },
+	{ src: "/galeria/18-aula.webp", alt: "Aula del Colegio Santa Gema", title: "Lugar para aprender", category: "Formación" },
+	{ src: "/galeria/19-mensaje-pasionista.webp", alt: "Mensaje de la Pasión de Jesucristo en una pared del colegio", title: "Nuestra fe", category: "Espiritualidad" },
+	{ src: "/galeria/21-patio-arbolado.webp", alt: "Patio arbolado del Colegio Santa Gema", title: "Patios para encontrarnos", category: "Espacios" },
+	{ src: "/galeria/27-patio-sombreado.webp", alt: "Patio sombreado por árboles dentro del colegio", title: "Al aire libre", category: "Vida escolar" },
+	{ src: "/galeria/30-futbol-sala.webp", alt: "Estudiantes juegan fútbol sala en la cancha del colegio", title: "Fútbol sala", category: "Vida escolar" },
+	{ src: "/galeria/31-acompanamiento-en-aula.webp", alt: "Docente acompaña a estudiantes durante una actividad en el aula", title: "Aprender juntos", category: "Formación" },
+	{ src: "/galeria/32-comunidad-en-el-patio.webp", alt: "Integrantes de la comunidad educativa reunidos en el patio", title: "Momentos compartidos", category: "Comunidad" },
+	{ src: "/galeria/33-amigos-en-el-colegio.webp", alt: "Grupo de estudiantes posa en las escaleras del colegio", title: "Amigos del colegio", category: "Comunidad" },
+	{ src: "/galeria/34-estudiantes-juntas.webp", alt: "Grupo de estudiantes sonríe junto en el colegio", title: "Juntas en Santa Gema", category: "Comunidad" },
+	{ src: "/galeria/35-familias-en-el-colegio.webp", alt: "Familias comparten una actividad en el colegio", title: "Familias que acompañan", category: "Comunidad" },
+	{ src: "/galeria/36-estudiantes-en-el-patio.webp", alt: "Grupo de estudiantes reunidos en el patio", title: "Encuentros en el patio", category: "Vida escolar" },
+	{ src: "/galeria/37-feria-de-ciencias.webp", alt: "Estudiantes presentan un proyecto en la feria de ciencias", title: "Feria de ciencias", category: "Formación" },
+	{ src: "/galeria/38-proyecto-de-fisica.webp", alt: "Estudiantes explican un proyecto de física", title: "Explorar la física", category: "Formación" },
+	{ src: "/galeria/39-proyecto-de-quimica.webp", alt: "Estudiantes presentan un proyecto de química", title: "Experimentar y aprender", category: "Formación" },
+	{ src: "/galeria/40-ciencia-con-alegria.webp", alt: "Estudiantes participan con entusiasmo en una actividad de ciencias", title: "Ciencia con alegría", category: "Formación" },
+	{ src: "/galeria/41-amigos-santa-gema.webp", alt: "Grupo de estudiantes comparte un momento en el colegio", title: "Amistades que crecen", category: "Comunidad" },
+	{ src: "/galeria/42-estudiantes-santa-gema.webp", alt: "Dos estudiantes del colegio sonríen en el patio", title: "Vida en Santa Gema", category: "Vida escolar" },
+	{ src: "/galeria/43-docentes-del-colegio.webp", alt: "Docentes del colegio comparten en una actividad", title: "Nuestras docentes", category: "Comunidad" },
+	{ src: "/galeria/44-comunidad-escolar.webp", alt: "Docentes y estudiantes reunidos durante una celebración escolar", title: "Una comunidad unida", category: "Comunidad" },
+	{ src: "/galeria/45-aniversario-santa-gema.webp", alt: "Integrantes del colegio celebran su aniversario con un pastel", title: "Aniversario del colegio", category: "Comunidad" },
+	{ src: "/galeria/46-aprendizaje-creativo.webp", alt: "Estudiantes muestran trabajos creativos en el aula", title: "Ideas en acción", category: "Formación" },
+	{ src: "/galeria/47-companeras-de-clase.webp", alt: "Grupo de estudiantes comparte en el salón de clases", title: "Compañeras de clase", category: "Vida escolar" },
+	{ src: "/galeria/48-actividad-creativa.webp", alt: "Estudiantes participan en una actividad creativa", title: "Crear juntos", category: "Vida escolar" },
+	{ src: "/galeria/49-graduacion.webp", alt: "Estudiantes celebran su graduación en el colegio", title: "Celebrar los logros", category: "Comunidad" },
+	{ src: "/galeria/50-celebracion-escolar.webp", alt: "Estudiante participa en una celebración escolar", title: "Día de celebración", category: "Vida escolar" },
+	{ src: "/galeria/51-comunidad-en-celebracion.webp", alt: "Docentes y estudiantes sonríen durante una celebración", title: "Celebramos juntos", category: "Comunidad" },
+	{ src: "/galeria/1011-estudiantes-en-las-escaleras.webp", alt: "Estudiantes comparten un momento en las escaleras del colegio", title: "Juntos en el colegio", category: "Vida escolar" },
+	{ src: "/galeria/1018-amigas-en-el-patio.webp", alt: "Tres estudiantes sonríen en el patio del colegio", title: "Amigas en el patio", category: "Comunidad" },
+	{ src: "/galeria/1030-familias-en-el-aniversario.webp", alt: "Familiares comparten durante el aniversario del colegio", title: "Familias que celebran", category: "Comunidad" },
+	{ src: "/galeria/1043-estudiantes-comparten.webp", alt: "Grupo de estudiantes reunidos en el colegio", title: "Encuentros que nos unen", category: "Vida escolar" },
+];
+const newPhotoSources = [
+	"/galeria/1011-estudiantes-en-las-escaleras.webp",
+	"/galeria/1018-amigas-en-el-patio.webp",
+	"/galeria/1030-familias-en-el-aniversario.webp",
+	"/galeria/1043-estudiantes-comparten.webp",
+];
+const newPhotoSet = new Set(newPhotoSources);
+const galleryPhotos = photos.filter((photo) => !newPhotoSet.has(photo.src));
+let shuffleSeed = 20260930;
+for (let index = galleryPhotos.length - 1; index > 0; index--) {
+	shuffleSeed = (Math.imul(shuffleSeed, 1664525) + 1013904223) >>> 0;
+	const swapIndex = shuffleSeed % (index + 1);
+	[galleryPhotos[index], galleryPhotos[swapIndex]] = [galleryPhotos[swapIndex], galleryPhotos[index]];
+}
+const newPhotos = newPhotoSources.map((src) => photos.find((photo) => photo.src === src)!);
+[3, 14, 25, 36].forEach((position, index) => galleryPhotos.splice(position, 0, newPhotos[index]));
+const photoGroups = Array.from({ length: Math.ceil(galleryPhotos.length / 7) }, (_, index) => galleryPhotos.slice(index * 7, index * 7 + 7));
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/webp" href="/logo.webp" />
+		<meta name="viewport" content="width=device-width" />
+		<SeoHead title="Galería | Colegio Santa Gema" description="Galería de espacios, identidad, fe y comunidad del Colegio Santa Gema." path="/galeria/" image="/galeria/52-estudiantes-en-los-pasillos.webp" />
+	</head>
+	<body class="bg-[#f6f9fc] font-sans text-slate-950 antialiased">
+		<SmoothScroll />
+		<Header />
+
+		<main>
+			<section class="relative isolate min-h-[60svh] overflow-hidden bg-[linear-gradient(115deg,#10243d_0%,#1d4261_53%,#236f73_100%)] px-6 pb-16 pt-28 text-white lg:px-8 lg:pb-20 lg:pt-32">
+				<img src="/galeria/52-estudiantes-en-los-pasillos.webp" width="2400" height="1600" alt="" class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center" fetchpriority="high" />
+				<div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,20,38,.86)_0%,rgba(7,20,38,.69)_50%,rgba(7,20,38,.50)_100%)]"></div>
+
+				<div class="relative z-10 mx-auto flex min-h-[calc(60svh-11rem)] max-w-7xl items-end">
+					<div class="w-full">
+						<div>
+							<h1 class="text-[clamp(4rem,10vw,8.5rem)] font-semibold leading-[.82] tracking-[-.07em]"><span class="bg-gradient-to-r from-blue-300 via-white to-emerald-300 bg-clip-text text-transparent">Galería</span></h1>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section class="gallery-light-section relative isolate overflow-hidden px-4 py-20 text-slate-900 sm:px-6 lg:px-8 lg:py-28">
+				<EducationTexture id="gallery-education-pattern" />
+				<div class="relative z-10 mx-auto max-w-7xl">
+					<header class="grid gap-7 border-b border-slate-300 pb-10 md:grid-cols-[1fr_.8fr] md:items-end">
+						<div>
+							<p class="text-xs font-bold tracking-[.24em] text-emerald-700 uppercase">Así se vive Santa Gema</p>
+							<h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-[-.045em] sm:text-6xl">Espacios que guardan historias</h2>
+						</div>
+						<p class="max-w-xl leading-8 text-slate-600 md:justify-self-end">Una colección de espacios, detalles y momentos que reflejan la identidad y la vida cotidiana del Colegio Santa Gema.</p>
+					</header>
+
+					<div class="gallery-mosaic mt-10" aria-label="Fotografías del Colegio Santa Gema">
+						{photoGroups.map((group, groupIndex) => (
+							<div class="gallery-mosaic-group" data-count={group.length}>
+								{group.map((photo, index) => (
+									<button type="button" class="gallery-mosaic-photo" data-gallery-index={groupIndex * 7 + index} aria-label={`Ampliar fotografía: ${photo.title}`}>
+										<img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+									</button>
+								))}
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section class="relative isolate overflow-hidden bg-gradient-to-br from-[#e9f3ff] via-[#d5ecef] to-[#a9d6d5] px-6 py-20 text-slate-900 lg:px-8 lg:py-24">
+				<div class="absolute inset-0 opacity-[.12]" style="background-image: radial-gradient(rgba(29,78,216,.65) .7px, transparent 1px); background-size: 20px 20px;"></div>
+				<div class="absolute -left-20 -top-40 h-[32rem] w-[32rem] rounded-full border border-blue-700/10"></div>
+				<div class="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+					<div><p class="text-xs font-bold tracking-[.24em] text-emerald-800 uppercase">Nuestra comunidad</p><h2 class="mt-4 max-w-4xl text-4xl font-semibold tracking-[-.04em] sm:text-5xl">Cada espacio cobra vida con quienes lo habitan.</h2></div>
+					<a href="/institucion/" class="group inline-flex w-fit items-center gap-3 rounded-full border border-blue-800/20 bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/10 transition hover:-translate-y-1 hover:bg-slate-900">Nuestra institución <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+				</div>
+			</section>
+		</main>
+
+		<dialog id="gallery-lightbox" class="m-auto h-full max-h-none w-full max-w-none bg-transparent p-0 text-white backdrop:bg-slate-950/95">
+			<div class="flex h-full min-h-svh flex-col bg-slate-950/90 p-4 sm:p-6">
+				<div class="flex items-center justify-between gap-4">
+					<p id="lightbox-counter" class="text-sm text-white/55"></p>
+					<button id="lightbox-close" type="button" class="grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-white/5 transition hover:bg-white hover:text-slate-950" aria-label="Cerrar imagen ampliada"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke-linecap="round" /></svg></button>
+				</div>
+				<div class="relative flex min-h-0 flex-1 items-center justify-center py-5 sm:px-16">
+					<button id="lightbox-prev" type="button" class="absolute left-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-slate-950/60 transition hover:bg-white hover:text-slate-950" aria-label="Fotografía anterior"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+					<img id="lightbox-image" src="" alt="" draggable="false" class="max-h-full max-w-full rounded-2xl object-contain shadow-2xl shadow-black/60" />
+					<button id="lightbox-next" type="button" class="absolute right-0 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-slate-950/60 transition hover:bg-white hover:text-slate-950" aria-label="Fotografía siguiente"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+				</div>
+			</div>
+		</dialog>
+
+		<Footer />
+
+		<script define:vars={{ photos: galleryPhotos }}>
+			const dialog = document.querySelector('#gallery-lightbox');
+			const image = document.querySelector('#lightbox-image');
+			const counter = document.querySelector('#lightbox-counter');
+			const closeButton = document.querySelector('#lightbox-close');
+			const previousButton = document.querySelector('#lightbox-prev');
+			const nextButton = document.querySelector('#lightbox-next');
+			let currentIndex = 0;
+
+			const renderPhoto = (index) => {
+				window.getSelection()?.removeAllRanges();
+				currentIndex = (index + photos.length) % photos.length;
+				const photo = photos[currentIndex];
+				image.src = photo.src;
+				image.alt = photo.alt;
+				counter.textContent = `${currentIndex + 1} de ${photos.length}`;
+			};
+
+			document.querySelectorAll('[data-gallery-index]').forEach((button) => {
+				button.addEventListener('click', () => {
+					renderPhoto(Number(button.dataset.galleryIndex));
+					dialog.showModal();
+					document.documentElement.style.overflow = 'hidden';
+				});
+			});
+
+			const closeLightbox = () => {
+				dialog.close();
+				document.documentElement.style.overflow = '';
+			};
+			closeButton.addEventListener('click', closeLightbox);
+			previousButton.addEventListener('click', () => renderPhoto(currentIndex - 1));
+			nextButton.addEventListener('click', () => renderPhoto(currentIndex + 1));
+			// Evita que los clics rápidos activen la selección o el arrastre nativos.
+			dialog.addEventListener('mousedown', (event) => event.preventDefault());
+			dialog.addEventListener('dragstart', (event) => event.preventDefault());
+			document.addEventListener('selectstart', (event) => {
+				if (dialog.open) event.preventDefault();
+			});
+			dialog.addEventListener('click', (event) => { if (event.target === dialog) closeLightbox(); });
+			dialog.addEventListener('close', () => { document.documentElement.style.overflow = ''; });
+			document.addEventListener('keydown', (event) => {
+				if (!dialog.open) return;
+				if (event.key === 'ArrowLeft') renderPhoto(currentIndex - 1);
+				if (event.key === 'ArrowRight') renderPhoto(currentIndex + 1);
+			});
+		</script>
+	</body>
+</html>

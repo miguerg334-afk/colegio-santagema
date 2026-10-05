@@ -1,0 +1,71 @@
+---
+const schoolNavigation = [
+	{ label: "Nuestra institución", href: "/institucion/" },
+	{ label: "Santa Gema", href: "/santa-gema/" },
+	{ label: "Galería", href: "/galeria/" },
+];
+
+const primaryNavigation = [
+	{ label: "Oferta académica", href: "/#oferta" },
+	{ label: "Calendario", href: "/calendario/" },
+	{ label: "Contacto", href: "/contacto/" },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+	<div class="mx-auto flex h-18 max-w-7xl items-center justify-between rounded-2xl border border-white/30 bg-slate-950/55 px-4 shadow-xl shadow-slate-950/15 backdrop-blur-xl sm:px-6 lg:px-8">
+		<a href="/" class="flex items-center gap-3" aria-label="Inicio Colegio Santa Gema">
+			<img src="/logo.webp" alt="Escudo del Colegio Santa Gema" class="h-12 w-12 shrink-0 object-contain" />
+			<span class="max-w-28 text-[0.68rem] font-semibold leading-tight tracking-[0.12em] text-white sm:max-w-none sm:text-sm sm:tracking-[0.16em]">COLEGIO SANTA GEMA</span>
+		</a>
+
+		<nav class="hidden items-center gap-7 text-sm font-medium text-white/90 lg:flex" aria-label="Navegación principal">
+			<details class="header-dropdown group relative">
+				<summary class="flex cursor-pointer list-none items-center gap-1.5 py-2 transition hover:text-emerald-200 [&::-webkit-details-marker]:hidden">
+					Colegio
+					<svg viewBox="0 0 16 16" class="h-3.5 w-3.5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+				</summary>
+				<div class="absolute left-1/2 top-[calc(100%+1rem)] w-60 -translate-x-1/2 rounded-2xl border border-white/15 bg-slate-950/95 p-2 shadow-2xl backdrop-blur-xl">
+					{schoolNavigation.map((item) => <a href={item.href} class="block rounded-xl px-4 py-3 text-sm text-white/85 transition hover:bg-white/10 hover:text-emerald-200">{item.label}</a>)}
+				</div>
+			</details>
+			{primaryNavigation.map((item) => <a href={item.href} class="relative py-2 transition after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform hover:text-emerald-200 hover:after:scale-x-100">{item.label}</a>)}
+		</nav>
+
+		<div class="flex items-center gap-3">
+			<a href="https://micolegio.jesistemas.com.ve/admin_alumnos/login.php?c=a67438969bea381a0340e80f7ad9fd4cf49f11143f3c2ca5" target="_blank" rel="noopener noreferrer" class="hidden rounded-full border border-white/60 px-4 py-2 text-sm font-semibold text-white transition hover:border-emerald-300 hover:bg-emerald-500 sm:inline-flex">
+				Ingresar
+				<span class="sr-only"> (abre el portal en una pestaña nueva)</span>
+			</a>
+
+			<details class="group relative lg:hidden">
+				<summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/60 text-white transition hover:border-emerald-300 hover:bg-white/10 [&::-webkit-details-marker]:hidden">
+					<span class="sr-only">Abrir menú</span>
+					<svg class="h-6 w-6 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+					<svg class="hidden h-6 w-6 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="m6 6 12 12M18 6 6 18" /></svg>
+				</summary>
+
+				<nav class="absolute right-0 top-[calc(100%+0.75rem)] w-72 rounded-2xl border border-white/20 bg-slate-950/95 p-3 shadow-2xl backdrop-blur-md" aria-label="Menú móvil">
+					<a href="/#inicio" class="block rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10 hover:text-emerald-200">Inicio</a>
+					<p class="px-4 pb-1 pt-4 text-[.65rem] font-bold tracking-[.18em] text-white/40 uppercase">Colegio</p>
+					{schoolNavigation.map((item) => <a href={item.href} class="block rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10 hover:text-emerald-200">{item.label}</a>)}
+					<div class="my-2 h-px bg-white/10"></div>
+					{primaryNavigation.map((item) => <a href={item.href} class="block rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10 hover:text-emerald-200">{item.label}</a>)}
+					<a href="https://micolegio.jesistemas.com.ve/admin_alumnos/login.php?c=a67438969bea381a0340e80f7ad9fd4cf49f11143f3c2ca5" target="_blank" rel="noopener noreferrer" class="mt-2 block rounded-xl bg-emerald-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-400">Ingresar al sistema<span class="sr-only"> (abre el portal en una pestaña nueva)</span></a>
+				</nav>
+			</details>
+		</div>
+	</div>
+</header>
+
+<script>
+	const dropdowns = document.querySelectorAll('.header-dropdown');
+	document.addEventListener('click', (event) => {
+		dropdowns.forEach((dropdown) => {
+			if (!(event.target instanceof Node) || !dropdown.contains(event.target)) dropdown.removeAttribute('open');
+		});
+	});
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') dropdowns.forEach((dropdown) => dropdown.removeAttribute('open'));
+	});
+</script>

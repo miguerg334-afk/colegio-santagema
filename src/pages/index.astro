@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import AcademicOfferSection from "../components/AcademicOfferSection.astro";
+import ExtracurricularSection from "../components/ExtracurricularSection.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import InstitutionSection from "../components/InstitutionSection.astro";
+import PassionistShieldSection from "../components/PassionistShieldSection.astro";
+import SchoolCalendar from "../components/SchoolCalendar.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import SeoHead from "../components/SeoHead.astro";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/webp" href="/logo.webp" />
+		<meta name="viewport" content="width=device-width" />
+		<SeoHead title="Colegio Santa Gema | Educación católica en Caracas" description="Colegio Santa Gema en Caracas: formación académica y en valores, vida escolar, calendario, galería y contacto para familias." path="/" image="/hero.webp" />
+	</head>
+	<body class="bg-slate-950 font-sans antialiased">
+		<SmoothScroll />
+		<Header />
+		<main id="inicio" class="relative isolate min-h-[100svh] overflow-hidden bg-slate-950">
+			<div class="hero-photo-layer absolute inset-0" aria-hidden="true"></div>
+
+			<section class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-8 pt-32 text-white sm:px-6 sm:pb-10 lg:px-8 lg:pb-12 lg:pt-36">
+				<div class="grid items-end gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,.85fr)] lg:gap-16">
+					<div>
+						<h1 class="mb-4 text-xs font-semibold tracking-[0.3em] text-emerald-200 uppercase">Formación católica · Caracas</h1>
+						<p class="hero-heading max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl xl:text-[5.2rem]">Educamos con <span class="hero-purpose block">propósito.</span></p>
+						<a href="/galeria/" class="group mt-6 inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-200">
+							Ver galería
+							<svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+						</a>
+					</div>
+					<p class="max-w-sm border-l border-white/40 pl-5 text-base leading-7 text-white/90 lg:mb-3">
+						Un espacio para crecer, aprender y construir un futuro al servicio de los demás.
+					</p>
+				</div>
+			</section>
+		</main>
+		<InstitutionSection />
+		<AcademicOfferSection />
+		<ExtracurricularSection />
+		<SchoolCalendar />
+		<PassionistShieldSection />
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,57 @@
+---
+import { Sparkles } from "@lucide/astro";
+import AccordionGallery from "./react/AccordionGallery";
+
+const clubs = ["Fútbol Sala", "Gimnasia Rítmica", "Voleibol", "Superaprendizaje", "Refuerzo y Diversión", "Canto", "Oratoria y simulacros CSGMUN"];
+const photos = [
+  { src: "/dsc-0090.webp", alt: "Comunidad escolar reunida en una actividad del colegio", label: "Compartir" },
+  { src: "/dsc-1025.webp", alt: "Estudiantes presentan una actividad de canto en el escenario", label: "Expresarse" },
+  { src: "/whatsapp-2026-08-31.webp", alt: "Estudiante muestra su trabajo creativo en el aula", label: "Crear" },
+  { src: "/dsc-1526.webp", alt: "Estudiantes juegan fútbol sala en la cancha", label: "Jugar" },
+  { src: "/dsc-1514.webp", alt: "Estudiantes practican fútbol sala", label: "Aprender" },
+  { src: "/dsc-1009.webp", alt: "Grupo de estudiantes junto a una pelota", label: "Convivir" },
+  { src: "/dsc-0201.webp", alt: "Grupo de estudiantes reunidos en el patio", label: "Descubrir" },
+];
+---
+
+<section id="actividades" class="clubs-section bg-white py-16 text-slate-950 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="clubs-section__intro flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+      <div class="max-w-xl">
+        <div class="flex items-center gap-3 text-emerald-800">
+          <Sparkles size={22} strokeWidth={1.8} aria-hidden="true" />
+          <p class="text-xs font-bold uppercase tracking-[.2em]">Actividades extracurriculares</p>
+        </div>
+        <h2 class="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">Tardes de Club</h2>
+        <p class="mt-4 max-w-lg text-base leading-7 text-slate-600 sm:text-lg">Talento, creatividad, deporte y acompañamiento académico.</p>
+      </div>
+      <p class="max-w-md text-base leading-7 text-slate-600">Una oferta que invita a aprender, crear, expresarse, liderar y descubrir nuevas posibilidades.</p>
+    </div>
+
+    <div class="mt-10">
+      <AccordionGallery
+        client:load
+        items={photos.map((photo) => ({ image: photo.src, alt: photo.alt, label: photo.label }))}
+        defaultIndex={0}
+        accentColor="#80e1be"
+        textColor="#ffffff"
+        height={470}
+        gap={10}
+        radius={18}
+        expandRatio={0.49}
+        grayscale={false}
+        className="clubs-accordion"
+      />
+    </div>
+    <ul class="mt-8 flex flex-wrap gap-x-2 gap-y-2 text-sm font-medium text-slate-600" aria-label="Actividades disponibles">
+      {clubs.map((club, index) => <li class="inline-flex items-center gap-2">{index > 0 && <span class="text-emerald-700" aria-hidden="true">·</span>}{club}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style is:global>
+  @media (max-width: 520px) {
+    .clubs-accordion.accordion-gallery { height: 680px !important; }
+    .clubs-accordion .ag-panel { min-height: 0; }
+  }
+</style>

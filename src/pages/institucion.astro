@@ -1,0 +1,161 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import SeoHead from "../components/SeoHead.astro";
+import { ArrowRight, BookOpen, HeartHandshake, Lightbulb, UsersRound } from "@lucide/astro";
+
+const milestones = [
+	{ year: "1966", title: "Una escuela parroquial abre sus puertas", text: "El 19 de septiembre comenzó la Escuela Parroquial de Santa Gema en Santa Eduvigis, Caracas. El P. Santiago León y la Sra. Edelmira acompañaron sus primeros pasos junto a 104 alumnos y cinco maestras." },
+	{ year: "1967", title: "La primaria crece", text: "Se incorporó el quinto grado. En aquellos primeros años, un galpón adaptado recibió al Kinder y la Quinta de la familia Lartitegui acogió a los estudiantes de primero a cuarto grado." },
+	{ year: "1969", title: "Una comunidad en expansión", text: "Con la incorporación del sexto grado, la escuela llegó a 180 alumnos. A partir de esa base continuó ampliando su propuesta educativa para nuevas generaciones." },
+	{ year: "2026", title: "Seis décadas de camino compartido", text: "El colegio celebra 60 años de historia. Familias, estudiantes, docentes, personal y religiosos han dado forma a una comunidad que sigue mirando hacia el futuro." },
+];
+
+const values = [
+	{ title: "Respeto y equidad", text: "Reconocer la dignidad de cada persona y convivir sin discriminación." },
+	{ title: "Responsabilidad", text: "Ejercer los derechos con conciencia y cumplir los deberes con compromiso." },
+	{ title: "Solidaridad y servicio", text: "Prestar atención a las necesidades de los demás y participar en la vida de la comunidad." },
+	{ title: "Creatividad y libertad", text: "Pensar con criterio propio, proponer soluciones y aprender con curiosidad." },
+];
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/webp" href="/logo.webp" />
+		<meta name="viewport" content="width=device-width" />
+		<SeoHead title="Nuestra institución | Colegio Santa Gema" description="Conoce la historia, la visión educativa y los valores del Colegio Santa Gema en Caracas." path="/institucion/" image="/institucion/estudiantes-hero.webp" />
+	</head>
+	<body class="bg-[#f7fbff] font-sans text-slate-950 antialiased">
+		<SmoothScroll />
+		<Header />
+		<main>
+			<section class="relative isolate min-h-[60svh] overflow-hidden bg-[linear-gradient(115deg,#10243d_0%,#1d4261_53%,#236f73_100%)] px-6 pb-16 pt-28 text-white lg:px-8 lg:pb-20 lg:pt-32">
+				<img src="/institucion/estudiantes-hero.webp" alt="" width="2400" height="1600" class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-[center_35%]" fetchpriority="high" />
+				<div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,20,38,.86)_0%,rgba(7,20,38,.69)_50%,rgba(7,20,38,.50)_100%)]"></div>
+				<div class="relative z-10 mx-auto flex min-h-[calc(60svh-11rem)] max-w-7xl items-end">
+					<div class="w-full">
+						<h1 class="max-w-5xl text-[clamp(4rem,10vw,8.5rem)] font-semibold leading-[.82] tracking-[-.07em]"><span class="bg-gradient-to-r from-blue-300 via-white to-emerald-300 bg-clip-text text-transparent">Nuestra institución</span></h1>
+					</div>
+				</div>
+			</section>
+
+			<section class="relative isolate overflow-hidden px-6 py-20 lg:px-8 lg:py-28" style="background-color: #f7fbff;">
+				<div class="relative z-10 mx-auto max-w-7xl">
+					<div class="institution-history-intro">
+						<div>
+							<p class="text-xs font-bold tracking-[.24em] text-emerald-700 uppercase">Nuestros comienzos</p>
+							<h2 class="mt-4 text-4xl font-semibold leading-tight tracking-[-.05em] sm:text-5xl">De una pequeña escuela a una comunidad de generaciones.</h2>
+							<p class="mt-6 max-w-lg leading-8 text-slate-600">La historia del Colegio Santa Gema comenzó con espacios sencillos y una convicción compartida: ofrecer educación católica a las familias de Santa Eduvigis. Su crecimiento fue posible gracias al trabajo de educadores, familias y la comunidad pasionista.</p>
+						</div>
+						<div class="institution-history-photo"><img src="/galeria/45-aniversario-santa-gema.webp" alt="Integrantes de la comunidad celebran el aniversario del Colegio Santa Gema" loading="lazy" /></div>
+					</div>
+					<ol class="institution-history-timeline">
+						{milestones.map((milestone, index) => (
+							<li class:list={["institution-history-milestone", index % 2 === 0 ? "is-left" : "is-right"]}>
+								<div class="institution-history-copy">
+									<p class="institution-history-step">Etapa {String(index + 1).padStart(2, "0")}</p>
+									<p class="institution-history-year">{milestone.year}</p>
+									<h3>{milestone.title}</h3>
+									<p class="institution-history-description">{milestone.text}</p>
+								</div>
+								<span class="institution-history-node" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+							</li>
+						))}
+					</ol>
+				</div>
+			</section>
+
+			<section class="institution-vision">
+				<div class="institution-vision-inner">
+					<div class="institution-vision-intro">
+						<p class="institution-vision-eyebrow">Nuestro horizonte</p>
+						<h2>Educar para pensar, convivir y participar.</h2>
+						<p>La visión institucional propone una formación integral: desarrollo académico, humano y espiritual, con estudiantes capaces de pensar críticamente y contribuir a una sociedad mejor.</p>
+					</div>
+					<div class="institution-vision-grid">
+						<article class="institution-vision-card"><Lightbulb size={28} strokeWidth={1.6} /><h3>Pensamiento propio</h3><p>Formar personas críticas, informadas, creativas y conscientes de sus derechos y deberes.</p></article>
+						<article class="institution-vision-card"><HeartHandshake size={28} strokeWidth={1.6} /><h3>Carisma pasionista</h3><p>Mantener la Pasión de Cristo como referencia espiritual y expresar la fe en el trato cotidiano.</p></article>
+						<article class="institution-vision-card"><UsersRound size={28} strokeWidth={1.6} /><h3>Familias presentes</h3><p>Construir una comunicación respetuosa y confiable con madres, padres y representantes.</p></article>
+						<article class="institution-vision-card"><BookOpen size={28} strokeWidth={1.6} /><h3>Mirada al futuro</h3><p>Promover la actualización pedagógica, el uso de tecnología educativa y el aprendizaje de un segundo idioma.</p></article>
+					</div>
+				</div>
+			</section>
+
+			<section class="institution-values">
+				<div class="institution-values-inner">
+					<div class="institution-values-content">
+						<p class="institution-values-eyebrow">Valores que vivimos</p>
+						<h2>La formación también ocurre <em>en cada encuentro.</em></h2>
+						<p class="institution-values-lead">El ideario del colegio reúne valores humanos y cristianos que orientan la convivencia y nuestra manera de aprender juntos.</p>
+					</div>
+					<div class="institution-values-list">
+						{values.map((value, index) => <article class="institution-value-row"><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{value.title}</h3><p>{value.text}</p></div></article>)}
+					</div>
+				</div>
+			</section>
+
+			<section class="bg-gradient-to-br from-[#e9f3ff] via-[#d9ecee] to-[#bce2d8] px-6 py-16 lg:px-8 lg:py-20">
+				<div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+					<div><p class="text-xs font-bold tracking-[.24em] text-emerald-800 uppercase">La vida en Santa Gema</p><h2 class="mt-3 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">Conoce los momentos que construyen nuestra comunidad.</h2></div>
+					<a href="/galeria/" class="group inline-flex w-fit items-center gap-3 rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/10 transition hover:-translate-y-1 hover:bg-slate-900">Ver la galería <ArrowRight size={17} class="transition group-hover:translate-x-1" /></a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.institution-values { padding: clamp(5rem, 8vw, 8rem) 1.5rem; background: linear-gradient(135deg, #f7fbff 0%, #edf5ff 100%); }
+	.institution-values-inner { display: grid; width: min(100%, 80rem); margin-inline: auto; gap: clamp(3rem, 7vw, 7rem); align-items: start; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+	.institution-values-content { position: sticky; top: 8rem; padding-top: 1rem; }
+	.institution-values-eyebrow { margin: 0; color: #047857; font-size: .78rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+	.institution-values-content h2 { margin: 1.25rem 0 0; color: #0f172a; font-size: clamp(2.7rem, 4.4vw, 4.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.06em; }
+	.institution-values-content h2 em { color: #2563eb; font-style: normal; }
+	.institution-values-lead { max-width: 36rem; margin: 1.5rem 0 0; color: #475569; font-size: 1.05rem; line-height: 1.75; }
+	.institution-values-list { border-top: 2px solid #1d4ed8; }
+	.institution-value-row { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1.25rem; padding: 1.65rem 0; border-bottom: 1px solid #bfd2e8; }
+	.institution-value-row > span { color: #2563eb; font-size: clamp(2rem, 3vw, 2.7rem); font-weight: 700; line-height: 1; letter-spacing: -.07em; }
+	.institution-value-row h3 { margin: 0; color: #0f172a; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 700; line-height: 1.2; }
+	.institution-value-row p { max-width: 32rem; margin: .5rem 0 0; color: #475569; font-size: 1rem; line-height: 1.6; }
+	@media (max-width: 800px) { .institution-values-inner { grid-template-columns: 1fr; gap: 2.75rem; } .institution-values-content { position: static; } }
+	.institution-vision { padding: clamp(5rem, 8vw, 8rem) 1.5rem; color: #fff; background-image: linear-gradient(100deg, rgb(2 8 23 / 48%), rgb(2 8 23 / 38%) 50%, rgb(2 8 23 / 48%)), linear-gradient(180deg, rgb(2 8 23 / 34%), rgb(2 8 23 / 48%)), url('/institucion/horizonte-estudiantes.webp'); background-position: center, center, center 42%; background-size: cover; background-attachment: fixed; }
+	.institution-vision-inner { width: min(100%, 80rem); margin-inline: auto; }
+	.institution-vision-intro { max-width: 52rem; }
+	.institution-vision-eyebrow { margin: 0; color: #6ee7b7; font-size: .8rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+	.institution-vision-intro h2 { margin: 1.25rem 0 0; font-size: clamp(2.5rem, 5vw, 4.25rem); font-weight: 700; line-height: 1.08; letter-spacing: -.05em; }
+	.institution-vision-intro > p:last-child { max-width: 43rem; margin: 1.5rem 0 0; color: #e2e8f0; font-size: 1.1rem; line-height: 1.8; }
+	.institution-vision-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+	.institution-vision-card { min-width: 0; padding: clamp(1.5rem, 2.5vw, 2.25rem); border: 1px solid rgb(255 255 255 / 25%); border-radius: 1.5rem; background: rgb(12 32 55 / 91%); box-shadow: 0 16px 40px rgb(0 0 0 / 12%); }
+	.institution-vision-card :global(svg) { color: #86efac; }
+	.institution-vision-card h3 { margin: 1.25rem 0 0; font-size: 1.35rem; font-weight: 700; line-height: 1.3; }
+	.institution-vision-card p { margin: .75rem 0 0; color: #e2e8f0; line-height: 1.7; }
+	@media (max-width: 700px) { .institution-vision { background-attachment: scroll; background-position: center, center, 55% center; } .institution-vision-grid { grid-template-columns: 1fr; } }
+	.institution-history-intro { display: grid; gap: 2.5rem; align-items: center; }
+	.institution-history-photo { width: min(100%, 30rem); aspect-ratio: 4 / 3; overflow: hidden; border-radius: 1.75rem; box-shadow: 0 24px 48px -24px rgb(15 23 42 / 30%); }
+	.institution-history-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+	.institution-history-timeline { position: relative; display: grid; margin: 4rem 0 0; padding: 0; list-style: none; }
+	.institution-history-timeline::before { content: ""; position: absolute; top: 2rem; bottom: 2rem; left: 1.55rem; width: 2px; background: linear-gradient(180deg, transparent, #60a5fa 6%, #2563eb 94%, transparent); }
+	.institution-history-milestone { position: relative; display: grid; min-height: 15rem; align-items: center; padding: 2rem 0 2rem 4.5rem; }
+	.institution-history-copy { max-width: 32rem; }
+	.institution-history-step { margin: 0 0 .75rem; color: #1d4ed8; font-size: .75rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
+	.institution-history-year { margin: 0; color: #1d4ed8; font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 700; line-height: 1; letter-spacing: -.06em; }
+	.institution-history-milestone h3 { margin: 1rem 0 0; color: #0f172a; font-size: clamp(1.35rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.2; }
+	.institution-history-description { margin: 1rem 0 0; color: #475569; font-size: 1rem; line-height: 1.8; }
+	.institution-history-node { position: absolute; top: 50%; left: 1.6rem; z-index: 1; display: grid; width: 3.2rem; height: 3.2rem; place-items: center; border: 5px solid #dbeafe; border-radius: 50%; background: #1d4ed8; box-shadow: 0 0 0 1px rgb(37 99 235 / 22%), 0 10px 25px rgb(30 64 175 / 15%); color: #fff; font-size: .68rem; font-weight: 800; transform: translate(-50%, -50%); }
+	@media (min-width: 1024px) {
+		.institution-history-intro { grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: 5rem; }
+		.institution-history-photo { justify-self: end; }
+	}
+	@media (min-width: 768px) {
+		.institution-history-timeline { margin-top: 5rem; }
+		.institution-history-timeline::before { left: 50%; }
+		.institution-history-milestone { grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1fr); min-height: 18rem; padding: 2rem 0; column-gap: 2rem; }
+		.institution-history-milestone.is-left .institution-history-copy { grid-column: 1; text-align: right; justify-self: end; }
+		.institution-history-milestone.is-right .institution-history-copy { grid-column: 3; }
+		.institution-history-node { left: 50%; }
+	}
+</style>

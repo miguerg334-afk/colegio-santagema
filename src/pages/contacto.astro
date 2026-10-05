@@ -1,0 +1,23 @@
+---
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import SeoHead from "../components/SeoHead.astro";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/webp" href="/logo.webp" />
+		<meta name="viewport" content="width=device-width" />
+		<SeoHead title="Contacto | Colegio Santa Gema" description="Contacta al Colegio Santa Gema en Caracas para consultas generales o admisiones y accede al formulario oficial de admisión." path="/contacto/" image="/hero.webp" />
+	</head>
+	<body class="bg-slate-950 font-sans antialiased">
+		<SmoothScroll />
+		<Header />
+		<main><ContactSection /></main>
+		<Footer />
+	</body>
+</html>
