@@ -1,85 +1,111 @@
 ---
-import { Check, BookOpen, MonitorCog } from "@lucide/astro";
+import { ArrowRight, BookOpen, Check, MonitorCog, X } from "@lucide/astro";
 
-const primaryFeatures = ["Inglés, Música y Robótica educativa como materias especiales.", "Educación Física con especialistas.", "Matemáticas interactivas con el método tekman.", "Desde 6.º grado, semilleros del Modelo de las Naciones Unidas (CSGMUN)."];
-const secondaryFeatures = ["Herramientas Digitales: Inteligencia Artificial y Marketing Digital.", "Finanzas y Economía.", "Teatro y artes plásticas.", "Liderazgo, Protocolo, Diplomacia y Oratoria."];
+const programs = [
+	{
+		id: "primaria", number: "01", level: "1.º a 6.º grado", title: "Educación Primaria",
+		summary: "Bases sólidas para aprender con curiosidad y confianza.",
+		description: "Fortalecemos las bases académicas y personales mediante experiencias de aprendizaje activas, creativas y significativas.",
+		features: ["Inglés, Música y Robótica educativa como materias especiales.", "Educación Física con especialistas.", "Matemáticas interactivas con el método tekman.", "Desde 6.º grado, semilleros del Modelo de las Naciones Unidas (CSGMUN)."],
+		icon: BookOpen,
+	},
+	{
+		id: "media", number: "02", level: "1.er a 5.º año", title: "Educación Media General",
+		summary: "Conocimientos y habilidades para construir el futuro.",
+		description: "Una formación orientada al futuro que integra conocimientos académicos, competencias digitales, financieras, comunicativas y de liderazgo.",
+		features: ["Herramientas Digitales: Inteligencia Artificial y Marketing Digital.", "Finanzas y Economía.", "Teatro y artes plásticas.", "Liderazgo, Protocolo, Diplomacia y Oratoria."],
+		note: "Asesorías extracurriculares de Química, Física y Matemáticas con profesores especializados.",
+		icon: MonitorCog,
+	},
+];
 ---
 
-<section id="oferta" class="academic-offer relative isolate scroll-mt-24 overflow-hidden bg-slate-950 py-20 text-white sm:py-28">
-	<div class="academic-offer__parallax" aria-hidden="true"></div>
-	<div class="academic-offer__shade absolute inset-0 z-[1]" aria-hidden="true"></div>
-	<div class="pointer-events-none absolute -right-8 top-4 z-[2] text-[clamp(11rem,26vw,25rem)] font-black leading-none tracking-[-.08em] text-white/[.035]" aria-hidden="true">SG</div>
-
-	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-		<header class="grid gap-7 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
-			<div>
-				<div class="flex items-center gap-4"><span class="h-px w-10 bg-emerald-300"></span><p class="text-xs font-bold tracking-[.24em] text-emerald-200 uppercase">Oferta académica</p></div>
-				<h2 class="academic-offer__text mt-5 max-w-3xl text-4xl font-semibold leading-[1.03] tracking-[-.045em] text-white sm:text-6xl">Formación integral para <span class="text-emerald-200">cada etapa.</span></h2>
-			</div>
-			<p class="academic-offer__text max-w-xl text-base leading-8 text-white lg:justify-self-end">Acompañamos a cada estudiante con excelencia académica, innovación educativa, valores, creatividad y desarrollo personal.</p>
+<section id="oferta" class="academic-offer scroll-mt-24">
+	<div class="academic-offer__photo" aria-hidden="true"></div>
+	<div class="academic-offer__shade" aria-hidden="true"></div>
+	<div class="academic-offer__inner">
+		<header class="academic-offer__header">
+			<div><p class="academic-offer__eyebrow">Oferta académica</p><h2>Formación integral para <span>cada etapa.</span></h2></div>
+			<p>Acompañamos a cada estudiante con excelencia académica, innovación educativa, valores, creatividad y desarrollo personal.</p>
 		</header>
-
-		<div class="academic-programs mt-14 grid gap-10 lg:grid-cols-2 lg:gap-12">
-			<article class="academic-program academic-program--primary">
-				<div class="flex items-center gap-4">
-					<span class="academic-program__icon grid h-12 w-12 place-items-center rounded-full bg-emerald-300/20 text-emerald-100 ring-1 ring-emerald-200/50"><BookOpen size={23} strokeWidth={1.8} /></span>
-					<p class="text-xs font-bold tracking-[.2em] text-emerald-100 uppercase">1.º a 6.º grado</p>
-					<span class="ml-auto font-serif text-2xl text-white/80">01</span>
-				</div>
-				<h3 class="academic-offer__text mt-6 text-3xl font-semibold tracking-[-.025em] sm:text-4xl">Educación Primaria</h3>
-				<p class="academic-offer__text mt-4 max-w-xl text-base leading-7 text-white">Fortalecemos las bases académicas y personales mediante experiencias de aprendizaje activas, creativas y significativas.</p>
-				<ul class="academic-program__list mt-7 space-y-3.5 text-sm leading-6 text-white sm:text-base">{primaryFeatures.map((feature) => <li class="academic-offer__text flex gap-3 transition duration-200 hover:translate-x-1 hover:text-emerald-100"><Check class="mt-1 h-4 w-4 shrink-0 text-emerald-200" strokeWidth={2.5} /><span>{feature}</span></li>)}</ul>
-			</article>
-
-			<article class="academic-program academic-program--secondary">
-				<div class="flex items-center gap-4">
-					<span class="academic-program__icon grid h-12 w-12 place-items-center rounded-full bg-blue-400/25 text-blue-100 ring-1 ring-blue-200/50"><MonitorCog size={23} strokeWidth={1.8} /></span>
-					<p class="text-xs font-bold tracking-[.2em] text-blue-100 uppercase">1.er a 5.º año</p>
-					<span class="ml-auto font-serif text-2xl text-white/80">02</span>
-				</div>
-				<h3 class="academic-offer__text mt-6 text-3xl font-semibold tracking-[-.025em] sm:text-4xl">Educación Media General</h3>
-				<p class="academic-offer__text mt-4 max-w-xl text-base leading-7 text-white">Una formación orientada al futuro que integra conocimientos académicos, competencias digitales, financieras, comunicativas y de liderazgo.</p>
-				<ul class="academic-program__list mt-7 space-y-3.5 text-sm leading-6 text-white sm:text-base">{secondaryFeatures.map((feature) => <li class="academic-offer__text flex gap-3 transition duration-200 hover:translate-x-1 hover:text-blue-100"><Check class="mt-1 h-4 w-4 shrink-0 text-blue-200" strokeWidth={2.5} /><span>{feature}</span></li>)}</ul>
-				<p class="academic-offer__text mt-6 text-sm leading-6 text-white sm:text-base">Asesorías extracurriculares de Química, Física y Matemáticas con profesores especializados.</p>
-			</article>
+		<div class="academic-offer__cards">
+			{programs.map((program) => {
+				const Icon = program.icon;
+				return <article class="academic-program-card">
+					<div class="academic-program-card__top"><span class="academic-program-card__icon"><Icon size={25} strokeWidth={1.8} /></span><span class="academic-program-card__number">{program.number}</span></div>
+					<p class="academic-program-card__level">{program.level}</p>
+					<h3>{program.title}</h3>
+					<p class="academic-program-card__summary">{program.summary}</p>
+					<button type="button" class="academic-program-card__button" data-program-open={program.id} aria-haspopup="dialog" aria-controls={`academic-program-${program.id}`}>Conoce el programa <ArrowRight size={19} aria-hidden="true" /></button>
+				</article>;
+			})}
 		</div>
-
 	</div>
+	{programs.map((program) => <dialog id={`academic-program-${program.id}`} class="academic-program-dialog" aria-labelledby={`academic-program-title-${program.id}`}>
+		<div class="academic-program-dialog__content">
+			<button type="button" class="academic-program-dialog__close" data-program-close aria-label={`Cerrar información de ${program.title}`}><X size={23} aria-hidden="true" /></button>
+			<p class="academic-program-dialog__eyebrow">{program.level} · Oferta académica</p>
+			<h2 id={`academic-program-title-${program.id}`}>{program.title}</h2>
+			<p class="academic-program-dialog__description">{program.description}</p>
+			<h3>Así aprendemos</h3>
+			<ul>{program.features.map((feature) => <li><Check size={18} strokeWidth={2.4} aria-hidden="true" /><span>{feature}</span></li>)}</ul>
+			{program.note && <p class="academic-program-dialog__note">{program.note}</p>}
+			<a class="academic-program-dialog__contact" href="/contacto/">Contáctanos <ArrowRight size={19} aria-hidden="true" /></a>
+		</div>
+	</dialog>)}
 </section>
 
+<script>
+	document.querySelectorAll<HTMLButtonElement>("[data-program-open]").forEach((button) => {
+		button.addEventListener("click", () => {
+			const id = button.dataset.programOpen;
+			if (!id) return;
+			(document.getElementById(`academic-program-${id}`) as HTMLDialogElement | null)?.showModal();
+		});
+	});
+	document.querySelectorAll<HTMLDialogElement>(".academic-program-dialog").forEach((dialog) => {
+		dialog.querySelector<HTMLButtonElement>("[data-program-close]")?.addEventListener("click", () => dialog.close());
+		dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+	});
+</script>
+
 <style>
-	.academic-offer__parallax {
-		position: absolute;
-		z-index: 0;
-		inset: 0;
-		background-image: url("/oferta-academica-parallax.webp");
-		background-position: center 42%;
-		background-size: cover;
-		background-attachment: fixed;
-		pointer-events: none;
-	}
-
-	.academic-offer__shade {
-		background: linear-gradient(100deg, rgb(2 8 23 / 48%) 0%, rgb(2 8 23 / 38%) 50%, rgb(2 8 23 / 48%) 100%), linear-gradient(180deg, rgb(2 8 23 / 34%) 0%, rgb(2 8 23 / 48%) 100%);
-		pointer-events: none;
-	}
-
-	.academic-offer__text { text-shadow: 0 1px 10px rgb(2 8 23 / 60%); }
-
-	.academic-program { min-width: 0; }
-	.academic-program--secondary { padding-top: 2.25rem; border-top: 1px solid rgb(255 255 255 / 24%); }
-	.academic-program__icon { transition: transform .3s ease, background-color .3s ease; }
-	.academic-program:hover .academic-program__icon { transform: translateY(-2px) scale(1.06); }
-
-	@media (min-width: 1024px) { .academic-program--secondary { padding-top: 0; border-top: 0; } }
-
-	@media (max-width: 767px) {
-		.academic-offer__parallax { background-position: 52% center; }
-		.academic-offer__shade { background: linear-gradient(180deg, rgb(2 8 23 / 45%), rgb(2 8 23 / 62%)); }
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.academic-program__icon { transition: none; }
-		.academic-program:hover .academic-program__icon { transform: none; }
-	}
+	.academic-offer { position: relative; isolation: isolate; min-height: 44rem; padding: clamp(5rem, 8vw, 7rem) 1.5rem; color: #fff; background: #10243d; }
+	.academic-offer__photo, .academic-offer__shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+	.academic-offer__photo { background: url('/oferta-academica-parallax.webp') center 42% / cover no-repeat; background-attachment: fixed; }
+	.academic-offer__shade { background: linear-gradient(90deg, rgb(5 18 33 / 53%), rgb(5 18 33 / 35%) 52%, rgb(5 18 33 / 50%)); }
+	.academic-offer__inner { width: min(100%, 80rem); margin-inline: auto; }
+	.academic-offer__header { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 2rem; }
+	.academic-offer__eyebrow { margin: 0; color: #a7f3d0; font-size: .75rem; font-weight: 800; letter-spacing: .23em; text-transform: uppercase; }
+	.academic-offer__header h2 { max-width: 46rem; margin: 1.3rem 0 0; font-size: clamp(2.5rem, 5vw, 4.8rem); font-weight: 700; line-height: 1.03; letter-spacing: -.045em; text-shadow: 0 2px 16px rgb(0 0 0 / 42%); }
+	.academic-offer__header h2 span { color: #a7f3d0; }
+	.academic-offer__header > p { max-width: 32rem; margin: 0 0 .25rem auto; font-size: 1.1rem; line-height: 1.7; text-shadow: 0 2px 12px rgb(0 0 0 / 65%); }
+	.academic-offer__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 3vw, 2rem); margin-top: clamp(3rem, 5vw, 4rem); }
+	.academic-program-card { display: flex; min-width: 0; min-height: 20rem; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem, 3vw, 2.3rem); border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.65rem; background: rgb(8 24 43 / 54%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%), 0 16px 40px rgb(0 0 0 / 16%); -webkit-backdrop-filter: blur(12px) saturate(130%); backdrop-filter: blur(12px) saturate(130%); transition: background .25s ease, transform .25s ease, border-color .25s ease; }
+	.academic-program-card:hover, .academic-program-card:focus-within { transform: translateY(-4px); border-color: rgb(167 243 208 / 85%); background: rgb(8 24 43 / 62%); }
+	.academic-program-card__top { display: flex; width: 100%; align-items: center; justify-content: space-between; }
+	.academic-program-card__icon { display: grid; width: 3.2rem; height: 3.2rem; place-items: center; border: 1px solid rgb(255 255 255 / 52%); border-radius: 50%; background: rgb(8 24 43 / 48%); color: #a7f3d0; }
+	.academic-program-card__number { font: 1.5rem Georgia, serif; color: rgb(255 255 255 / 85%); }
+	.academic-program-card__level { margin: 1.35rem 0 .5rem; color: #d1fae5; font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+	.academic-program-card h3 { margin: 0; font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 700; line-height: 1.12; text-shadow: 0 2px 12px rgb(0 0 0 / 55%); }
+	.academic-program-card__summary { max-width: 31rem; margin: .9rem 0 1.6rem; font-size: 1.02rem; line-height: 1.5; text-shadow: 0 1px 9px rgb(0 0 0 / 70%); }
+	.academic-program-card__button { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; gap: .8rem; margin-top: auto; padding: .65rem 1.15rem; border: 1px solid rgb(255 255 255 / 85%); border-radius: 999px; background: rgb(255 255 255 / 94%); color: #10243d; font-weight: 750; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+	.academic-program-card__button:hover { transform: translateY(-2px); background: #d1fae5; }
+	.academic-program-card__button:focus-visible, .academic-program-dialog button:focus-visible, .academic-program-dialog a:focus-visible { outline: 3px solid #34d399; outline-offset: 3px; }
+	.academic-program-dialog { width: min(calc(100% - 2rem), 42rem); max-height: min(90dvh, 54rem); margin: auto; padding: 0; overflow-y: auto; border: 0; border-radius: 1.5rem; background: #fff; color: #10243d; box-shadow: 0 30px 90px rgb(0 0 0 / 35%); }
+	.academic-program-dialog::backdrop { background: rgb(4 15 29 / 72%); backdrop-filter: blur(5px); }
+	.academic-program-dialog__content { position: relative; padding: clamp(1.6rem, 5vw, 3rem); }
+	.academic-program-dialog__close { position: absolute; top: 1rem; right: 1rem; display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border: 0; border-radius: 50%; background: #eff6ff; color: #10243d; cursor: pointer; }
+	.academic-program-dialog__eyebrow { margin: 0 2.5rem .8rem 0; color: #047857; font-size: .72rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+	.academic-program-dialog h2 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; letter-spacing: -.04em; }
+	.academic-program-dialog__description { margin: 1rem 0 2rem; color: #475569; font-size: 1.08rem; line-height: 1.65; }
+	.academic-program-dialog h3 { margin: 0 0 1rem; font-size: 1.25rem; }
+	.academic-program-dialog ul { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+	.academic-program-dialog li { display: flex; gap: .7rem; line-height: 1.5; }
+	.academic-program-dialog li :global(svg) { flex: none; margin-top: .2rem; color: #059669; }
+	.academic-program-dialog__note { margin: 1.5rem 0 0; padding: 1rem; border-radius: .8rem; background: #eff6ff; line-height: 1.55; }
+	.academic-program-dialog__contact { display: inline-flex; align-items: center; gap: .65rem; margin-top: 2rem; padding: .85rem 1.2rem; border-radius: 999px; background: #17458a; color: #fff; font-weight: 700; text-decoration: none; }
+	@media (max-width: 700px) { .academic-offer__header, .academic-offer__cards { grid-template-columns: 1fr; } .academic-offer__header > p { margin: 0; } .academic-program-card { min-height: 18rem; } .academic-offer__photo { background-position: 52% center; background-attachment: scroll; } .academic-offer__shade { background: rgb(5 18 33 / 50%); } }
+	@media (prefers-reduced-motion: reduce) { .academic-offer__photo { background-attachment: scroll; } }
+	@media (prefers-reduced-motion: reduce) { .academic-program-card, .academic-program-card__button { transition: none; } .academic-program-card:hover, .academic-program-card__button:hover { transform: none; } }
 </style>

@@ -24,7 +24,6 @@ const photos = [
 	{ src: "/galeria/27-patio-sombreado.webp", alt: "Patio sombreado por árboles dentro del colegio", title: "Al aire libre", category: "Vida escolar" },
 	{ src: "/galeria/30-futbol-sala.webp", alt: "Estudiantes juegan fútbol sala en la cancha del colegio", title: "Fútbol sala", category: "Vida escolar" },
 	{ src: "/galeria/31-acompanamiento-en-aula.webp", alt: "Docente acompaña a estudiantes durante una actividad en el aula", title: "Aprender juntos", category: "Formación" },
-	{ src: "/galeria/32-comunidad-en-el-patio.webp", alt: "Integrantes de la comunidad educativa reunidos en el patio", title: "Momentos compartidos", category: "Comunidad" },
 	{ src: "/galeria/34-estudiantes-juntas.webp", alt: "Grupo de estudiantes sonríe junto en el colegio", title: "Juntas en Santa Gema", category: "Comunidad" },
 	{ src: "/galeria/35-familias-en-el-colegio.webp", alt: "Familias comparten una actividad en el colegio", title: "Familias que acompañan", category: "Comunidad" },
 	{ src: "/galeria/36-estudiantes-en-el-patio.webp", alt: "Grupo de estudiantes reunidos en el patio", title: "Encuentros en el patio", category: "Vida escolar" },
@@ -64,6 +63,21 @@ for (let index = galleryPhotos.length - 1; index > 0; index--) {
 }
 const newPhotos = newPhotoSources.map((src) => photos.find((photo) => photo.src === src)!);
 [3, 14, 25, 36].forEach((position, index) => galleryPhotos.splice(position, 0, newPhotos[index]));
+const studentPhotoSources = new Set([
+	"30-futbol-sala", "31-acompanamiento-en-aula", "34-estudiantes-juntas", "36-estudiantes-en-el-patio",
+	"37-feria-de-ciencias", "38-proyecto-de-fisica", "39-proyecto-de-quimica", "40-ciencia-con-alegria",
+	"41-amigos-santa-gema", "42-estudiantes-santa-gema", "44-comunidad-escolar", "46-aprendizaje-creativo",
+	"47-companeras-de-clase", "48-actividad-creativa", "49-graduacion", "50-celebracion-escolar",
+	"51-comunidad-en-celebracion", "1011-estudiantes-en-las-escaleras", "1018-amigas-en-el-patio", "1043-estudiantes-comparten",
+]);
+const teacherPhotoSources = new Set([
+	"31-acompanamiento-en-aula", "43-docentes-del-colegio", "44-comunidad-escolar",
+	"45-aniversario-santa-gema", "51-comunidad-en-celebracion",
+]);
+const galleryTags = galleryPhotos.map((photo) => {
+	const name = photo.src.split("/").pop()?.replace(".webp", "") ?? "";
+	return [studentPhotoSources.has(name) ? "estudiantes" : "", teacherPhotoSources.has(name) ? "profesores" : ""].filter(Boolean);
+});
 const photoGroups = Array.from({ length: Math.ceil(galleryPhotos.length / 7) }, (_, index) => galleryPhotos.slice(index * 7, index * 7 + 7));
 ---
 
@@ -79,11 +93,11 @@ const photoGroups = Array.from({ length: Math.ceil(galleryPhotos.length / 7) }, 
 		<Header />
 
 		<main>
-			<section class="relative isolate min-h-[60svh] overflow-hidden bg-[linear-gradient(115deg,#10243d_0%,#1d4261_53%,#236f73_100%)] px-6 pb-10 pt-28 text-white lg:px-8 lg:pb-12 lg:pt-32">
+			<section class="relative isolate min-h-[48svh] overflow-hidden bg-[linear-gradient(115deg,#10243d_0%,#1d4261_53%,#236f73_100%)] px-6 pb-10 pt-28 text-white sm:min-h-[50svh] lg:px-8 lg:pb-12 lg:pt-32">
 				<img src="/galeria/52-estudiantes-en-los-pasillos.webp" width="2400" height="1600" alt="" class="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center" fetchpriority="high" />
 				<div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,20,38,.56)_0%,rgba(7,20,38,.42)_50%,rgba(7,20,38,.28)_100%)]"></div>
 
-				<div class="relative z-10 mx-auto flex min-h-[calc(60svh-11rem)] max-w-7xl items-end">
+				<div class="relative z-10 mx-auto flex min-h-[calc(48svh-11rem)] max-w-7xl items-end sm:min-h-[calc(50svh-11rem)]">
 					<div class="w-full">
 						<div>
 							<h1 class="text-[clamp(4rem,10vw,8.5rem)] font-semibold leading-[.82] tracking-[-.07em]"><span class="bg-gradient-to-r from-blue-300 via-white to-emerald-300 bg-clip-text text-transparent">Galería</span></h1>
@@ -102,13 +116,18 @@ const photoGroups = Array.from({ length: Math.ceil(galleryPhotos.length / 7) }, 
 							<h2 class="mt-4 max-w-3xl text-4xl font-semibold tracking-[-.045em] sm:text-6xl">Espacios que guardan historias</h2>
 						</div>
 						<p class="max-w-xl leading-8 text-slate-600 md:justify-self-end">Una colección de espacios, detalles y momentos que reflejan la identidad y la vida cotidiana del Colegio Santa Gema.</p>
-					</header>
+						</header>
+					<div class="gallery-filters" role="group" aria-label="Filtrar fotografías por personas">
+						<button type="button" class="gallery-filter is-active" data-gallery-filter="todas" aria-pressed="true">Todas <span>{galleryPhotos.length}</span></button>
+						<button type="button" class="gallery-filter" data-gallery-filter="estudiantes" aria-pressed="false">Estudiantes <span>{galleryTags.filter((tags) => tags.includes("estudiantes")).length}</span></button>
+						<button type="button" class="gallery-filter" data-gallery-filter="profesores" aria-pressed="false">Profesores <span>{galleryTags.filter((tags) => tags.includes("profesores")).length}</span></button>
+					</div>
 
-					<div class="gallery-mosaic mt-10" aria-label="Fotografías del Colegio Santa Gema">
+					<div class="gallery-mosaic mt-8" aria-label="Fotografías del Colegio Santa Gema">
 						{photoGroups.map((group, groupIndex) => (
 							<div class="gallery-mosaic-group" data-count={group.length}>
 								{group.map((photo, index) => (
-									<button type="button" class="gallery-mosaic-photo" data-gallery-index={groupIndex * 7 + index} aria-label={`Ampliar fotografía: ${photo.title}`}>
+									<button type="button" class="gallery-mosaic-photo" data-gallery-index={groupIndex * 7 + index} data-gallery-tags={galleryTags[groupIndex * 7 + index].join(" ")} aria-label={`Ampliar fotografía: ${photo.title}`}>
 										<img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
 									</button>
 								))}
@@ -146,25 +165,60 @@ const photoGroups = Array.from({ length: Math.ceil(galleryPhotos.length / 7) }, 
 
 		<script define:vars={{ photos: galleryPhotos }}>
 			const dialog = document.querySelector('#gallery-lightbox');
+			const mosaic = document.querySelector('.gallery-mosaic');
+			const filterButtons = [...document.querySelectorAll('[data-gallery-filter]')];
+			const photoButtons = [...document.querySelectorAll('[data-gallery-index]')];
 			const image = document.querySelector('#lightbox-image');
 			const counter = document.querySelector('#lightbox-counter');
 			const closeButton = document.querySelector('#lightbox-close');
 			const previousButton = document.querySelector('#lightbox-prev');
 			const nextButton = document.querySelector('#lightbox-next');
 			let currentIndex = 0;
+			let visibleIndices = photos.map((_, index) => index);
+			let filterTimer;
+
+			const showFilter = (filter) => {
+				visibleIndices = photoButtons
+					.filter((button) => filter === 'todas' || button.dataset.galleryTags.split(' ').includes(filter))
+					.map((button) => Number(button.dataset.galleryIndex));
+				mosaic.replaceChildren();
+				for (let index = 0; index < visibleIndices.length; index += 7) {
+					const group = document.createElement('div');
+					group.className = 'gallery-mosaic-group';
+					const indices = visibleIndices.slice(index, index + 7);
+					group.dataset.count = String(indices.length);
+					indices.forEach((photoIndex) => group.append(photoButtons[photoIndex]));
+					mosaic.append(group);
+				}
+				filterButtons.forEach((button) => {
+					const active = button.dataset.galleryFilter === filter;
+					button.classList.toggle('is-active', active);
+					button.setAttribute('aria-pressed', String(active));
+				});
+				requestAnimationFrame(() => mosaic.classList.remove('is-changing'));
+			};
+
+			filterButtons.forEach((button) => button.addEventListener('click', () => {
+				const filter = button.dataset.galleryFilter;
+				if (button.classList.contains('is-active')) return;
+				clearTimeout(filterTimer);
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { showFilter(filter); return; }
+				mosaic.classList.add('is-changing');
+				filterTimer = setTimeout(() => showFilter(filter), 180);
+			}));
 
 			const renderPhoto = (index) => {
 				window.getSelection()?.removeAllRanges();
-				currentIndex = (index + photos.length) % photos.length;
-				const photo = photos[currentIndex];
+				currentIndex = (index + visibleIndices.length) % visibleIndices.length;
+				const photo = photos[visibleIndices[currentIndex]];
 				image.src = photo.src;
 				image.alt = photo.alt;
-				counter.textContent = `${currentIndex + 1} de ${photos.length}`;
+				counter.textContent = `${currentIndex + 1} de ${visibleIndices.length}`;
 			};
 
-			document.querySelectorAll('[data-gallery-index]').forEach((button) => {
+			photoButtons.forEach((button) => {
 				button.addEventListener('click', () => {
-					renderPhoto(Number(button.dataset.galleryIndex));
+					renderPhoto(visibleIndices.indexOf(Number(button.dataset.galleryIndex)));
 					dialog.showModal();
 					document.documentElement.style.overflow = 'hidden';
 				});
