@@ -1,14 +1,10 @@
 ---
-import { ArrowUpRight, Mail, Phone, AtSign, ClipboardList } from "@lucide/astro";
+import { ArrowUpRight, Mail, AtSign, ClipboardList } from "@lucide/astro";
 ---
 
 <section id="contacto" class="contact-page">
 	<div class="contact-page-inner">
-		<div class="contact-intro">
-			<p class="contact-eyebrow">Colegio Santa Gema · Caracas</p>
-			<h1>Estamos para <span>ayudarte.</span></h1>
-			<p>Elige el canal adecuado para tu consulta y comunícate directamente con nuestro equipo.</p>
-		</div>
+		<p class="contact-intro">Elige el canal adecuado para tu consulta y comunícate directamente con nuestro equipo.</p>
 
 		<div class="contact-admissions">
 			<div class="contact-admissions-icon"><ClipboardList size={30} strokeWidth={1.7} /></div>
@@ -25,8 +21,8 @@ import { ArrowUpRight, Mail, Phone, AtSign, ClipboardList } from "@lucide/astro"
 			<div class="contact-details-heading"><p class="contact-eyebrow">Canales de atención</p><h2>Hablemos directamente.</h2></div>
 			<div class="contact-methods">
 				<article class="contact-method"><span class="contact-method-icon"><Mail size={23} strokeWidth={1.7} /></span><p class="contact-card-label">Secretaría · consultas generales</p><a href="mailto:Secretaria@uecolegiosantagema.com">Secretaria@uecolegiosantagema.com</a></article>
-				<article class="contact-method"><span class="contact-method-icon"><Phone size={23} strokeWidth={1.7} /></span><p class="contact-card-label">Teléfono general</p><a href="tel:+584242487238">+58 424 248 7238</a></article>
-				<article class="contact-method"><span class="contact-method-icon"><Phone size={23} strokeWidth={1.7} /></span><p class="contact-card-label">Administración</p><a href="tel:+584241834374">+58 424 183 4374</a></article>
+				<article class="contact-method"><span class="contact-method-icon"><img src="/social/whatsapp.svg" width="23" height="23" alt="" aria-hidden="true" /></span><p class="contact-card-label">WhatsApp general</p><a href="https://wa.me/584242487238" target="_blank" rel="noopener noreferrer">+58 424 248 7238<span class="sr-only"> (abre WhatsApp en una pestaña nueva)</span></a></article>
+				<article class="contact-method"><span class="contact-method-icon"><img src="/social/whatsapp.svg" width="23" height="23" alt="" aria-hidden="true" /></span><p class="contact-card-label">WhatsApp administración</p><a href="https://wa.me/584241834374" target="_blank" rel="noopener noreferrer">+58 424 183 4374<span class="sr-only"> (abre WhatsApp en una pestaña nueva)</span></a></article>
 				<article class="contact-method"><span class="contact-method-icon"><AtSign size={23} strokeWidth={1.7} /></span><p class="contact-card-label">Comunicación y redes</p><a href="mailto:colegiosantagemaredes@gmail.com">colegiosantagemaredes@gmail.com</a></article>
 			</div>
 		</div>
@@ -42,13 +38,10 @@ import { ArrowUpRight, Mail, Phone, AtSign, ClipboardList } from "@lucide/astro"
 </section>
 
 <style>
-	.contact-page { min-height: 100svh; padding: clamp(9rem, 14vw, 13rem) 1.5rem 7rem; color: #0f172a; background: linear-gradient(160deg, #e8f4ff 0%, #f8fbff 45%, #e7f5f0 100%); }
+	.contact-page { padding: 5rem 1.5rem 7rem; color: #0f172a; background: linear-gradient(160deg, #e8f4ff 0%, #f8fbff 45%, #e7f5f0 100%); }
 	.contact-page-inner { width: min(100%, 80rem); margin-inline: auto; }
 	.contact-eyebrow, .contact-card-label { margin: 0; color: #047857; font-size: .76rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-	.contact-intro { max-width: 54rem; }
-	.contact-intro h1 { margin: 1.3rem 0 0; font-size: clamp(3.6rem, 8vw, 7rem); font-weight: 700; letter-spacing: -.075em; line-height: .98; }
-	.contact-intro h1 span { color: #2563eb; }
-	.contact-intro > p:last-child { max-width: 38rem; margin: 1.6rem 0 0; color: #475569; font-size: 1.15rem; line-height: 1.7; }
+	.contact-intro { max-width: 54rem; margin: 0; color: #475569; font-size: 1.15rem; line-height: 1.7; }
 	.contact-admissions { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; margin-top: 4rem; padding: clamp(1.75rem, 4vw, 3rem); border-radius: 2rem; color: #fff; background: linear-gradient(115deg, #10243d, #17458a 70%, #0c7a78); box-shadow: 0 25px 55px rgb(19 53 99 / 20%); }
 	.contact-admissions-icon { display: grid; width: 4rem; height: 4rem; place-items: center; border: 1px solid rgb(255 255 255 / 30%); border-radius: 1.1rem; color: #a7f3d0; background: rgb(255 255 255 / 9%); }
 	.contact-admissions .contact-card-label { color: #a7f3d0; }
@@ -70,6 +63,6 @@ import { ArrowUpRight, Mail, Phone, AtSign, ClipboardList } from "@lucide/astro"
 	.contact-social-links a { display: inline-flex; align-items: center; gap: .65rem; min-height: 3.2rem; padding: .8rem 1.15rem; border: 1px solid #bfd2e8; border-radius: 999px; color: #17345f; background: #fff; font-weight: 700; transition: background .2s ease, transform .2s ease; }
 	.contact-social-links a:hover { transform: translateY(-2px); background: #dbeafe; }
 	@media (max-width: 900px) { .contact-admissions { grid-template-columns: auto minmax(0, 1fr); } .contact-form-link { grid-column: 2; justify-self: start; } .contact-details { grid-template-columns: 1fr; } }
-	@media (max-width: 650px) { .contact-page { padding-top: 8rem; } .contact-admissions { grid-template-columns: 1fr; } .contact-form-link { grid-column: 1; } .contact-methods { grid-template-columns: 1fr; } .contact-social { align-items: start; flex-direction: column; } }
+	@media (max-width: 650px) { .contact-page { padding-top: 4rem; } .contact-admissions { grid-template-columns: 1fr; } .contact-form-link { grid-column: 1; } .contact-methods { grid-template-columns: 1fr; } .contact-social { align-items: start; flex-direction: column; } }
 	@media (prefers-reduced-motion: reduce) { .contact-form-link, .contact-social-links a { transition: none; } }
 </style>
